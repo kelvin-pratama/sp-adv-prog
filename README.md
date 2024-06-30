@@ -12,3 +12,14 @@ Gradle: Gradle 8.7 (included in Apache NetBeans)
 
 
 Semua project dalam repo ini menggunakan Gradle Application.
+
+PROGRESS:
+1. Java Fundamental (DONE)
+2. Class dan Object
+3. Enkapsulasi
+4. Inheritance
+5. Polymorphism
+6. File dan Exception Handling
+7. Java GUI Swing
+8. Java GUI, JDBC Connector, dan MySQL
+9. Java GUI dengan iReport
