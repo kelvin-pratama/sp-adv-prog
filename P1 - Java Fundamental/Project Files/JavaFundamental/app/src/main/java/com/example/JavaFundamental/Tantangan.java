@@ -1,13 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.example.JavaFundamental;
 import java.util.Scanner;
-/**
- *
- * @author kelvi
- */
+
 public class Tantangan {
     public static float volumeBalok(float panjang, float lebar, float tinggi){
         float volume = panjang * lebar * tinggi;
