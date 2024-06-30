@@ -10,4 +10,5 @@ Java: Java Development Kit 21.0.3; (https://download.oracle.com/java/21/latest/j
 
 Gradle: Gradle 8.7 (included in Apache NetBeans)
 
+
 Semua project dalam repo ini menggunakan Gradle Application.
