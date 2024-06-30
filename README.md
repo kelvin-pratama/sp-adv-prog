@@ -1,6 +1,5 @@
 Repository ini berisi tugas Mata Kuliah Pemrograman Lanjut dalam Semester Antara 2024 Program Studi Teknik Komputer, Jurusan Teknik Informatika dan Komputer, Fakultas Teknik, Universitas Negeri Makassar.
 
-
 Tools used:
 OS: Windows 10 Pro 22H2 (amd64/x64 System; build 19045.4529)
 IDE: Apache NetBeans IDE 22; (https://dlcdn.apache.org/netbeans/netbeans-installers/22/Apache-NetBeans-22-bin-windows-x64.exe)
