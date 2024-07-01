@@ -15,7 +15,7 @@ Semua project dalam repo ini menggunakan Gradle Application.
 
 PROGRESS:
 1. Java Fundamental (DONE)
-2. Class dan Object
+2. Class dan Object (DONE Project, Laporan ongoing)
 3. Enkapsulasi
 4. Inheritance
 5. Polymorphism
