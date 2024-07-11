@@ -8,6 +8,6 @@ public class Praktikum33 {
         System.out.println("Alas Segitiga : " + ob.getAlas());
         System.out.println("Tinggi Segitiga : " + ob.getTinggi());
         ob.setLuasSegitiga(ob.getAlas(), ob.getTinggi());
-        System.out.println("Alas Segitiga : " + ob.getAlas());
+        System.out.println("Luas Segitiga : " + ob.getLuasSegitiga());
     }
 }
