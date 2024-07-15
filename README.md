@@ -17,7 +17,7 @@ PROGRESS:
 1. Java Fundamental (DONE Project, DONE Laporan)
 2. Class dan Object (DONE Project, DONE Laporan)
 3. Enkapsulasi (DONE Project, DONE Laporan)
-4. Inheritance
+4. Inheritance (DONE Project, DONE Laporan)
 5. Polymorphism
 6. File dan Exception Handling
 7. Java GUI Swing
