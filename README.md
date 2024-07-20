@@ -19,7 +19,7 @@ PROGRESS:
 3. Enkapsulasi (DONE Project, DONE Laporan)
 4. Inheritance (DONE Project, DONE Laporan)
 5. Polymorphism (DONE Project, DONE Laporan)
-6. File dan Exception Handling (DONE Project, ONGOING Laporan)
+6. File dan Exception Handling (DONE Project, DONE Laporan)
 7. Java GUI Swing
 8. Java GUI, JDBC Connector, dan MySQL
 9. Java GUI dengan iReport
