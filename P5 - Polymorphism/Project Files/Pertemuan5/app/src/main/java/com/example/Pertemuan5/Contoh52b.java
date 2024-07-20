@@ -1,12 +1,12 @@
 package com.example.Pertemuan5;
 
-class binatang {
+class binatang2 {
     int umur = 12;
     int get_umur (){
         return umur;
     }
 }
-public class Contoh52b extends binatang {
+public class Contoh52b extends binatang2 {
     int umur = 20;
     int get_umur(){
         return 25;
