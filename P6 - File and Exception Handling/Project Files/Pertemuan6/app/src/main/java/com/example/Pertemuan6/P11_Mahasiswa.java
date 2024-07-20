@@ -31,7 +31,7 @@ class DemoThrow {
         return nama;
     }
 }
-public class Mahasiswa{
+public class P11_Mahasiswa{
     public static void main(String[] args){
         DemoThrow mhs = new DemoThrow();
         mhs.setNIM(null);

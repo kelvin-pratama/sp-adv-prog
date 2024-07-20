@@ -4,7 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class BacaFile {
+public class P7_BacaFile {
     public static void main(String args[]){
         File file = new File(("java.txt"));
         try {

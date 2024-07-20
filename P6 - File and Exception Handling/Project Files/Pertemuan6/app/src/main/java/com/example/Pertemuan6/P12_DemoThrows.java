@@ -1,6 +1,6 @@
 package com.example.Pertemuan6;
 //Praktikum 6.12
-public class DemoThrows {
+public class P12_DemoThrows {
     public static void cobaEksepsi() throws IllegalAccessException{
         throw new IllegalAccessException("KESALAHAN: Illegal Access");
     }

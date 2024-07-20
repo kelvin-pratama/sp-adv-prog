@@ -3,7 +3,7 @@ package com.example.Pertemuan6;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class TulisFile {
+public class P6_TulisFile {
     public static void main(String args[]){
         File file = new File("java.txt");
         try{

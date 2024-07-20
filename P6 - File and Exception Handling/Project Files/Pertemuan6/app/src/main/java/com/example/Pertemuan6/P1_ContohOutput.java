@@ -1,6 +1,6 @@
 package com.example.Pertemuan6;
 //Praktikum 6.1
-public class ContohOutput {
+public class P1_ContohOutput {
     public static void main(String[] args) {
         int varInt = 45;
         double varDouble = 7.98845d;

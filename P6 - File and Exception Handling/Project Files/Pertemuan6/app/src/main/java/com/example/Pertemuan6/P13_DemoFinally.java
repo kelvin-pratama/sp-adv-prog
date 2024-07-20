@@ -1,6 +1,6 @@
 package com.example.Pertemuan6;
 //Praktikum 6.13
-public class DemoFinally {
+public class P13_DemoFinally {
     public static void cobaEksepsi(int pembilang, int penyebut){
         try{
             int hasil = pembilang / penyebut;

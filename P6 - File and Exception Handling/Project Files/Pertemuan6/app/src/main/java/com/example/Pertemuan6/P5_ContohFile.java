@@ -1,6 +1,6 @@
 package com.example.Pertemuan6;
 //Praktikum 6.5
-public class ContohFile {
+public class P5_ContohFile {
     public static void main(String args[]){
         java.io.File file = new java.io.File(("java.txt"));
         try{
