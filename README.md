@@ -21,5 +21,5 @@ PROGRESS:
 5. Polymorphism (DONE Project, DONE Laporan)
 6. File dan Exception Handling (DONE Project, DONE Laporan)
 7. Java GUI Swing (DONE Project, ONGOING Laporan)
-8. Java GUI, JDBC Connector, dan MySQL
+8. Java GUI, JDBC Connector, dan MySQL (ONGOING Project (skrg hal.90 modul), ONGOING Laporan)
 9. Java GUI dengan iReport
