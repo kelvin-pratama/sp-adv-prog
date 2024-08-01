@@ -4,6 +4,15 @@
  */
 package program.universitas;
 
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.Connection;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 /**
  *
  * @author kelvi
@@ -13,8 +22,47 @@ public class Form extends javax.swing.JFrame {
     /**
      * Creates new form Form
      */
+    private DefaultTableModel model;
     public Form() {
         initComponents();
+        model = new DefaultTableModel();
+        tabelMahasiswa.setModel(model);
+        model.addColumn("Nim");
+        model.addColumn("Nama");
+        model.addColumn("Tanggal_Lahir");
+        model.addColumn("Jurusan");
+        model.addColumn("Alamat");
+        
+        this.loadData();
+    }
+    public void loadData(){
+        //Menghapus seluruh data
+        model.getDataVector().removeAllElements();
+        
+        //Memberi tahu bahwa data telah kosong
+        model.fireTableDataChanged();
+        model.setRowCount(0);
+        try{
+            Connection c = KoneksiDatabase.getKoneksi();
+            Statement s = c.createStatement();
+            
+            String sql = "SELECT * FROM mahasiswa";
+            ResultSet r = s.executeQuery(sql);
+            
+            while(r.next()){
+                Object[] o = new Object[5];
+                o[0] = r.getString("nim");
+                o[1] = r.getString("nama");
+                o[2] = r.getString("tanggal_lahir");
+                o[3] = r.getString("jurusan");
+                o[4] = r.getString("alamat");
+                model.addRow(o);
+            }
+            r.close();
+            s.close();
+        }catch(SQLException e){
+            System.out.println("Terjadi Error");
+        }
     }
 
     /**
@@ -26,21 +74,286 @@ public class Form extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        InputNama = new javax.swing.JTextField();
+        InputNIM = new javax.swing.JTextField();
+        InputJurusan = new javax.swing.JTextField();
+        InputTanggalLahir = new javax.swing.JFormattedTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        InputAlamat = new javax.swing.JTextArea();
+        TombolHapus = new javax.swing.JButton();
+        TombolUbah = new javax.swing.JButton();
+        TombolTambah = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tabelMahasiswa = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable1);
+
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable2);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Nama :");
+
+        jLabel2.setText("NIM :");
+
+        jLabel3.setText("Tanggal Lahir:");
+
+        jLabel4.setText("Jurusan:");
+
+        jLabel5.setText("Alamat :");
+
+        InputTanggalLahir.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("d/M/yyyy"))));
+
+        InputAlamat.setColumns(20);
+        InputAlamat.setRows(5);
+        jScrollPane1.setViewportView(InputAlamat);
+
+        TombolHapus.setText("Hapus");
+        TombolHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolHapusActionPerformed(evt);
+            }
+        });
+
+        TombolUbah.setText("Ubah");
+        TombolUbah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolUbahActionPerformed(evt);
+            }
+        });
+
+        TombolTambah.setText("Tambah");
+        TombolTambah.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TombolTambahActionPerformed(evt);
+            }
+        });
+
+        tabelMahasiswa.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tabelMahasiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelMahasiswaMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(tabelMahasiswa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(TombolTambah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TombolUbah)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TombolHapus))
+                            .addComponent(InputNama)
+                            .addComponent(InputNIM, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addComponent(InputJurusan)
+                            .addComponent(InputTanggalLahir))
+                        .addGap(6, 6, 6))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(InputNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(InputNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(InputTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(InputJurusan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TombolHapus)
+                    .addComponent(TombolUbah)
+                    .addComponent(TombolTambah))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolHapusActionPerformed
+        // TODO add your handling code here:
+        int i = tabelMahasiswa.getSelectedRow();
+        if(i == -1){
+            return;
+        }
+        
+        String nim = (String) model.getValueAt(i, 0);
+        try{
+            Connection c = KoneksiDatabase.getKoneksi();
+            String sql = "DELETE FROM mahasiswa WHERE nim = ?";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setString(1, nim);
+            p.executeUpdate();
+            p.close();
+        }catch(SQLException e){
+            System.err.println("Terjadi Error");
+        }finally{
+            this.loadData();
+        }
+    }//GEN-LAST:event_TombolHapusActionPerformed
+
+    private void TombolTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolTambahActionPerformed
+        // TODO add your handling code here:
+        String nim = InputNIM.getText();
+        String nama = InputNama.getText();
+        java.util.Date tanggalLahir = (java.util.Date) InputTanggalLahir.getValue();
+        String jurusan = InputJurusan.getText();
+        String alamat = InputAlamat.getText();
+        
+        try{
+            Connection c = KoneksiDatabase.getKoneksi();
+            String sql = "INSERT INTO mahasiswa VALUES (?,?,?,?,?)";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setString(1, nim);
+            p.setString(2, nama);
+            p.setDate(3, new java.sql.Date(tanggalLahir.getTime()));
+            p.setString(4, jurusan);
+            p.setString(5, alamat);
+            p.executeUpdate();
+            p.close();
+            
+        }catch(SQLException e){
+            System.out.println("Terjadi Error: " + e.getMessage());
+        }finally{
+            this.loadData();
+        }
+    }//GEN-LAST:event_TombolTambahActionPerformed
+
+    private void TombolUbahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TombolUbahActionPerformed
+        // TODO add your handling code here:
+        int i = tabelMahasiswa.getSelectedRow();
+        if(i == -1){
+            return;
+        }
+        
+        //ambil nim yang terseleksi
+        String nim = (String) model.getValueAt(i, 0);
+        String nama = InputNama.getText();
+        java.util.Date tanggalLahir = (java.util.Date) InputTanggalLahir.getValue();
+        String jurusan = InputJurusan.getText();
+        String alamat = InputAlamat.getText();
+        try{
+            Connection c = KoneksiDatabase.getKoneksi();
+            String sql = "UPDATE mahasiswa SET nama = ?, tanggal_lahir = ?, jurusan = ?, alamat = ? WHERE nim = ?";
+            PreparedStatement p = c.prepareStatement(sql);
+            p.setString(1, nama);
+            p.setDate(2, new java.sql.Date(tanggalLahir.getTime()));
+            p.setString(3, jurusan);
+            p.setString(4, alamat);
+            p.setString(5, nim);
+            p.executeUpdate();
+            p.close();
+        }catch(SQLException e){
+            System.out.println("Terjadi Error");
+        }finally{
+            this.loadData();
+        }
+    }//GEN-LAST:event_TombolUbahActionPerformed
+
+    private void tabelMahasiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMahasiswaMouseClicked
+        // TODO add your handling code here:
+        int i = tabelMahasiswa.getSelectedRow();
+        if(i == -1){
+            return;
+        }
+        try{
+            String nim = (String) model.getValueAt(i, 0);
+            InputNIM.setText(nim);
+            String nama = (String) model.getValueAt(i, 1);
+            InputNama.setText(nama);
+            SimpleDateFormat inputFormatter = new SimpleDateFormat("yyyy-MM-dd");
+            java.util.Date tanggalLahir = inputFormatter.parse((String) model.getValueAt(i, 2));
+            InputTanggalLahir.setValue(tanggalLahir);
+            String jurusan = (String) model.getValueAt(i, 3);
+            InputJurusan.setText(jurusan);
+            String alamat = (String) model.getValueAt(i, 4);
+            InputAlamat.setText(alamat);
+        }catch(ParseException e){
+            System.err.println("Terjadi Error: " + e.getMessage());
+        }
+        
+    }//GEN-LAST:event_tabelMahasiswaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -78,5 +391,25 @@ public class Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea InputAlamat;
+    private javax.swing.JTextField InputJurusan;
+    private javax.swing.JTextField InputNIM;
+    private javax.swing.JTextField InputNama;
+    private javax.swing.JFormattedTextField InputTanggalLahir;
+    private javax.swing.JButton TombolHapus;
+    private javax.swing.JButton TombolTambah;
+    private javax.swing.JButton TombolUbah;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTable2;
+    private javax.swing.JTable tabelMahasiswa;
     // End of variables declaration//GEN-END:variables
 }
